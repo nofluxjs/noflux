@@ -24,7 +24,7 @@ npm install --save-dev babel-plugin-transform-decorators-legacy
 
 ## 例子
 
-这是一个使用 Noflux 的简单例子。你也可以在线调试它：[https://codesandbox.io/s/qyBJ3n43](https://codesandbox.io/s/qyBJ3n43)。
+这是一个使用 Noflux 的简单例子。你也可以在线调试它：[https://codesandbox.io/s/z47wLwP8](https://codesandbox.io/s/z47wLwP8)。
 
 ```jsx
 import React, { Component } from 'react';
