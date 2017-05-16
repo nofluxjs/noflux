@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "ga"
+  ],
+  "pluginsConfig": {
+    "ga": {
+      "token": "UA-99244857-1"
+    }
+  }
+}
