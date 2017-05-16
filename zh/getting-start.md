@@ -59,5 +59,5 @@ Noflux 所暴露的接口非常少，准确讲只有`state`与`connect`。
 
 如果一个组件通过 `state.get` 获取的值被修改了，那么这个组件将通过 [forceUpdate](https://facebook.github.io/react/docs/react-component.html#forceupdate) 被重新渲染，这意味着它的 `render` 方法将会被调用。
 
-更加详细的文档，请阅读下一节：[API](./api.md)。
+更加详细的文档，请阅读下一节：[API](./api)。
 
