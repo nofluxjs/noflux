@@ -1,6 +1,6 @@
 # `state`
 
-Noflux 使用单一数据源，在一个 Noflux 应用中，只有一个全局唯一的 `state`,它是 `@noflux/state` 中 `State` 类的实例。
+Noflux 使用 **单一数据源** ，在一个 Noflux 应用中，只有一个全局唯一的 `state`,它是 `@noflux/state` 中 `State` 类的实例。
 
 ```js
 import { state } from '@noflux/react';

@@ -53,7 +53,7 @@ Noflux 所暴露的接口非常少，准确讲只有`state`与`connect`。
 
 * `state` 维护着全局唯一的状态，并提供如 `get`、`set` 之类的接口供数据操作。
 
-与 [Redux](http://redux.js.org/) 类似，Noflux 使用单一数据源，且 `state` 是不可变的（immutable）——虽然它的操作方法看起来不像。
+与 [Redux](http://redux.js.org/) 类似，Noflux 使用 **单一数据源** ，且 `state` 是不可变的（immutable）——虽然它的操作方法看起来不像。
 
 * `connect` 将感知 `state` 的变化并智能的重新渲染组件。
 
