@@ -10,4 +10,5 @@
 ## 导航
 
 * [入门](./getting-start.md) 快速入门教程
-* [API文档](./api.md) API文档
+* [基础](./basic) 基础使用
+* [API](./api) API文档

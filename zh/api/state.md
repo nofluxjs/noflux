@@ -1,17 +1,6 @@
 # `state`
 
-Noflux 使用 **单一数据源** ，在一个 Noflux 应用中，只有一个全局唯一的 `state`,它是 `@noflux/state` 中 `State` 类的实例。
-
-```js
-import { state } from '@noflux/react';
-import { State } from '@noflux/state';
-
-console.log(State.prototype.isPrototypeOf(state)); // output: true
-```
-
-`state` 内部维护了一棵 `Object` 组成的状态树，通常这是一个可以被序列化（如`JSON.stringify`）的对象，虽然不能序列化的对象也是可以接受的，但无法享受同构渲染等优点。
-
-## `path` 路径描述字符串
+## `path` 路径描述字符串 {#path}
 
 Noflux 中提供了一套遍历任意 `JavaScript` 对象的路径描述方式——**路径描述字符串**，通过使用点（`.`）分隔的路径描述字符串可以定位至对象的特定子节点，它的使用非常简单，就像直接访问 `JavaScript` 对象一样。例如对于这个对象：
 
