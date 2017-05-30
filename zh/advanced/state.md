@@ -1,6 +1,6 @@
 # `state`
 
-## `path` 路径描述字符串 {#path}
+## 路径描述字符串（`path` ） {#path}
 
 Noflux 中提供了一套遍历任意 `JavaScript` 对象的路径描述方式——**路径描述字符串**，通过使用点（`.`）分隔的路径描述字符串可以定位至对象的特定子节点，它的使用非常简单，就像直接访问 `JavaScript` 对象一样。例如对于这个对象：
 
@@ -67,7 +67,7 @@ console.log(obj1 === obj2);  // output: false
 
 需要注意，`state.set` 是改变内部状态树的推荐方法，直接使用点`.`修改属性（如 `state.get().a.b = 1`）将会造成组件不能正常渲染等问题。
 
-## `state.cursor([path = ''])`
+## `state.cursor([path = ''])` {#cursor}
 
 如果需要频繁读、写 `state` 特定路径下的数据，可以使用 `state.cursor` 使代码更加清晰。
 
@@ -78,7 +78,7 @@ const a = state.cursor('a');
 a.get();                     // same as state.get('a')
 a.cursor('b').set('c', 1);   // same as state.set('a.b.c', 1)
 ```
-## `state[Array.prototype.*]`
+## 数组操作
 
 因为 `Array.prototype.push` 等操作修改原数组会破坏 `state` 的不可变性。`state` 重新封装了这些操作，使其总是返回数组的新副本。
 
@@ -101,7 +101,7 @@ state.set('a', [1, 2, 3]);
 state.cursor('a').push(4, 5);        // object tree: { a: [1, 2, 3, 4, 5] }
 state.cursor('a').splice(2, 1, 'a'); // object tree: { a: [1, 2, 'a', 4, 5] }
 ```
-## `state.snapshot()`
+## 快照
 
 得益于不可变性和写时复制，`state` 可以较低成本的实现快照功能。
 

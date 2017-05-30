@@ -1,41 +1,12 @@
 # `@connect`
 
-`@connect` 是一个修饰符，它在组件与 `state` 之间建立联系：当同步或异步的修改了 `state` 中的状态时——例如调用 `state.set` 或 `state.push`，依赖这部分状态的组件都会被重新渲染（通过运行 `forceUpdate` 调用 `render` 函数）。
+## 原理
 
-例如在下面的例子中，`onChange` 事件的触发会修改 `state` 中 `name` 的值，该组件重新渲染并显示出 `name` 的值（在线调试： [https://codesandbox.io/s/z47wLwP8](https://codesandbox.io/s/z47wLwP8)。）：
+Noflux 重新渲染组件的核心方法是 [Component#forceUpdate](https://facebook.github.io/react/docs/react-component.html#forceupdate)，通过 `@connect` 修饰符 Noflux 可以对组件进行修改，从而实现对 `forceUpdate` 的自动调用。
 
-```jsx
-import React, { Component } from 'react';
-import { connect, state } from '@noflux/react';
+因此，只应当异步的调用 `state.set`——如在事件监听中或在 `Promise#then` 中，在 [组件更新的声明周期](https://facebook.github.io/react/docs/react-component.html#updating) 中同步的调用 `forceUpdate` 可能造成无限递归。
 
-state.set({
-  name: 'jack',
-});
-
-@connect
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <input onChange={e => state.set('name', e.target.value)} />
-        <p> Hello, my name is {state.get('name')} </p>
-      </div>
-    )
-  }
-}
-```
-
-## 使用时机
-
-什么时候应该使用 `@connect` 修饰符？
-
-当组件内使用了 `state.get` 时，就应该给这个组件添加 `@connect` 修饰符。这表示改组件会订阅状态的变化并自动重新渲染。
-
-**不要忘记给组件添加 `@connect` 修饰符，否则这个组件将不能正常重新渲染。**
-
-> 如果你熟悉 [MobX](https://mobx.js.org/) ，会发现 `@connect` 和 MobX 中的 `@observer`非常相像。
-
-## 部分监听
+## 部分监听 {#partial-connect}
 
 对于使用 **单一数据源** 的状态管理实现，都会面对 `state` 过大且子状态较多时产生的性能问题。在单页面应用中各个模块的数据可能存放在不同子状态中，当其中一个模块的状态改变时，需要避免其他模块被重新渲染。
 
@@ -92,7 +63,3 @@ const dataB = state.get('dataB');
 ```
 
 > `@connect` 依靠 `@noflux/state` 包中的 **监听树** 实现部分监听，后者做了许多算法优化以保证性能。
-
-## 组件设计
-
-TODO
