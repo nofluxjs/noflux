@@ -6,6 +6,14 @@ Noflux 的前身是 `noflux` 项目（NPM：[noflux](https://www.npmjs.com/packa
 
 Noflux 由几个有一定依赖关系的 NPM 包组成，为防止与 `noflux` 项目混淆，这些包 **都以 [@noflux](https://www.npmjs.com/org/noflux) 为前缀**。
 
+## 新功能
+
+非常建议 `noflux` 用户迁移到 Noflux，因为相比于前者，后者提供了很多新的功能：
+
+* `state.cursor` 与 `state` [同构](./state.md#cursor)。
+* `@connect` [部分监听](./connect.md#partial-connect) 可以避免大量重复渲染，从而提高 `render` 性能。
+* [完全重构的监听树](https://github.com/nofluxjs/noflux-state/pull/10)，进行了充分的性能测试和优化。
+
 ## 迁移列表
 
 ### 破坏性变化
