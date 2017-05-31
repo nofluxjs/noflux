@@ -8,3 +8,4 @@
 * [高级](./advanced/index.md)
   * [state](./advanced/state.md)
   * [@connect](./advanced/connect.md)
+  * [从 noflux 迁移](./advanced/migration.md)
