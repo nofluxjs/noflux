@@ -8,19 +8,6 @@
 npm install @noflux/react
 ```
 
-Noflux 使用ES Next中的“修饰器”（decorators），需要运行这条命令安装对修饰器插件：
-
-```bash
-npm install --save-dev babel-plugin-transform-decorators-legacy
-```
-
-然后修改 `.babelrc` 文件开启该插件：
-
-```js
-{
-  "plugins": ["transform-decorators-legacy"]
-}
-```
 
 ## 例子
 
@@ -46,6 +33,33 @@ export default class App extends Component {
   }
 }
 ```
+
+## 语法
+
+Noflux 中的 `connect` 函数是一个“修饰器”（decorators）。虽然修饰器是ES Next 的[提案](https://tc39.github.io/proposal-decorators/)，但是在 ES5 环境下也可以使用：
+
+```jsx
+class App extends Component {
+  //...
+}
+export default connect(App);
+```
+
+如果使用 [Babel](https://babeljs.io/) 等 JavaScript 编译器，通过简单配置即可使用 `@connect` 修饰器。以 `babel` 为例，需要运行这条命令安装对修饰器插件：
+
+```bash
+npm install --save-dev babel-plugin-transform-decorators-legacy
+```
+
+然后修改 `.babelrc` 文件开启该插件：
+
+```js
+{
+  "plugins": ["transform-decorators-legacy"]
+}
+```
+
+> 在接下来的文档中，代码示例都将使用修饰器语法书写。
 
 ## 接口
 
