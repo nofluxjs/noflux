@@ -1,6 +1,6 @@
 # Noflux
 
-The Noflux project.
+*Simple, stupid state management for JavaScript apps.*
 
 ## Packages
 
