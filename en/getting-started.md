@@ -62,9 +62,9 @@ And modify the `.babelrc` file to enable the plugin:
 
 ## Interfaces
 
-Noflux exports a few interfaces, only `state` and `connect`。
+Noflux only exports two interfaces, `state` and `connect`。
 
-* `state` maintains a globally unique state and provides methods suck as `get` and `set` for state modification.
+* `state` maintains a global unique state and provides methods such as `get` and `set` to read/write state.
 
 > Noflux uses **single source of truth** and provide an immutable `state`, that is similar to [Redux](http://redux.js.org/).
 

@@ -68,13 +68,13 @@ Noflux provices immutable operators for not only `Object` but also `Array`. For 
 
 ## single source of truth
 
-Noflux the global unique state, the **single source of truth** one, which is why you don't need to use `new` to create `state` but directly import it.
+Noflux global unique state, the **single source of truth** one, make it no need to use `new` to create `state` but directly import it.
 
 ```js
 import { state } from '@noflux/react';
 ```
 
-Since the `state` is held by the closure within `@noflux/react`, you can import it in any `.js` (or `.jsx`) file. No need to use any "magic" to get a reference to the `state`, suck as [Context](https://facebook.github.io/react/docs/context.html).
+Since the `state` is held by the closure within `@noflux/react`, you can import it in any `.js` (or `.jsx`) file. No need to use any "magic" to get a reference to the `state`, such as [Context](https://facebook.github.io/react/docs/context.html).
 
 Using the single source of truth state avoids the complexity of management of state fragmentation, and it can easily implement hot reloading or snapshots.
 
@@ -90,7 +90,7 @@ Don't worry, Noflux `state` use Copy-on-write to reduce the cost of duplicating 
 * Object with `getter` 或 `setter`
 * Inherited object
 
-> Because Noflux uses the object and array spread operator, `{ ...obj }` and `[...arr]`, only `Own Property` will be clone.
+> Because Noflux uses the object and array spread operator, `{ ...obj }` and `[...arr]`, only `Own Property` will be cloned.
 
 There are more advantages to using serializable state:
 
