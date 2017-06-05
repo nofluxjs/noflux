@@ -12,7 +12,7 @@
 
 不可变的（Immutable）状态意味着不应当直接修改原始状态，而应当在修改时创建状态的副本。它的好处是可以方便的实现热重载、历史快照等功能。
 
-有许多方式可以实现一个“不可变对象”，如使用 [Immutable.js](https://facebook.github.io/immutable-js/) 这样的库，或是使用 ES2015 的 `Object.assign` 以及 展开运算符（`...`）。下面是一个例子：
+有许多方式可以实现一个“不可变对象”，如使用 [Immutable.js](https://facebook.github.io/immutable-js/) 这样的库，或是使用 ES2015 的 `Object.assign` 以及 ES2016 的展开运算符（`...`）。下面是一个例子：
 
 ```js
 const originObj = {
@@ -62,13 +62,13 @@ state.set('a.b.d', 5);  // same as clone(originObj).a.b.d = 3
 state.get();            // return the modified object
 ```
 
-不仅针对对象，`state` 同时提供了对于数组的读写所需要的“不可变”操作函数，例如 `state.get('a.b.c.1')`，将返回 `2`。这种描述对象操作的字符串被称为“路径描述字符串”，它的具体用法可见 [高级 - state](../advanced/state.md#path)。
+不仅针对对象，`state` 同时提供了对于数组的读写所需要的“不可变”操作函数，例如 `state.get('a.b.c.1')`，将返回 `2`。参数中描述对象操作的字符串被称为“路径描述字符串”，它的具体用法可见 [高级 - state](../advanced/state.md#path)。
 
-> `state` 对象来自 `@noflux/state` 包（[NPM](https://www.npmjs.com/package/@noflux/state)、[Github](https://github.com/nofluxjs/noflux-state)），它封装了 Noflux 所需的状态管理与事件监听。
+> `state` 的实现在 `@noflux/state` 包（[NPM](https://www.npmjs.com/package/@noflux/state)、[Github](https://github.com/nofluxjs/noflux-state)），它封装了 Noflux 所需的状态管理与事件监听。
 
 ## 单一数据源
 
-Noflux 使用 **单一数据源** ，在一个 Noflux 应用中通常只有一个全局唯一的 `state`，这也是为什么我们不需要使用 `new` 创建 `state` 而直接引入即可：
+Noflux 使用 **单一数据源** ，在一个 Noflux 应用中通常只有一个全局唯一的 `state`，这也是为什么我们不需要使用 `new` 创建 `state` 而直接引入即可。
 
 ```js
 import { state } from '@noflux/react';
@@ -80,7 +80,7 @@ import { state } from '@noflux/react';
 
 但这也意味着任何状态的修改都会创建一个新的对象树，而状态的改变又会触发界面的重新渲染（Re-rendering），随着状态越来越复杂，页面的渲染时间会成倍增加。
 
-不过不用担心，在 Noflux 使用“写时复制”（Copy-on-write）技术降低创建状态树副本的成本以及 `@connect` 修饰符智能的避免页面无用的重渲染。对于性能的优化在后文中将做更详细的介绍。
+不过不用担心，Noflux 使用“写时复制”（Copy-on-write）技术降低创建状态树副本的成本以及 `@connect` 修饰符智能的避免页面无用的重渲染。对于性能的优化在后文中将做更详细的介绍。
 
 ## 序列化
 
@@ -96,7 +96,7 @@ import { state } from '@noflux/react';
 
 * 存储于 `localStorage` 或 `sessionStorage`
 * 用于同构渲染
-* 避免嵌套对象中复杂的 `this`
+* 避免嵌套对象中复杂的 `this` 引用
 
 # 下一步
 
