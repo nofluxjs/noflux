@@ -11,6 +11,6 @@
 
 # Documentations
 
-* [English](en/)
-* [简体中文](zh/)
+* [English](https://noflux.js.org/en/)
+* [简体中文](https://noflux.js.org/zh/)
 
