@@ -6,7 +6,7 @@ Noflux 重新渲染组件的核心方法是 [Component#forceUpdate](https://face
 
 因此，只应当异步的调用 `state.set`——如在事件监听中或在 `Promise#then` 中，在 [组件更新的声明周期](https://facebook.github.io/react/docs/react-component.html#updating) 中同步的调用 `forceUpdate` 可能造成无限递归。
 
-## 部分监听 {#partial-connect}
+## 部分监听 {#partial-connecting}
 
 对于使用 **单一数据源** 的状态管理实现，都会面对 `state` 过大且子状态较多时产生的性能问题。在单页面应用中各个模块的数据可能存放在不同子状态中，当其中一个模块的状态改变时，需要避免其他模块被重新渲染。
 
@@ -62,4 +62,4 @@ const dataA = state.get('dataA');
 const dataB = state.get('dataB');
 ```
 
-> `@connect` 依靠 `@noflux/state` 包中的 **监听树** 实现部分监听，后者做了许多算法优化以保证性能。
+> `@connect` 依靠 `@noflux/state` 包中的 [监听树](https://github.com/nofluxjs/noflux-state/blob/next/src/listener-tree.js) 实现部分监听，后者做了许多算法优化以保证性能。

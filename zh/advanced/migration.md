@@ -1,4 +1,6 @@
-# 从 `noflux` 迁移
+# 迁移
+
+从 `noflux` 迁移。
 
 ## 背景
 
@@ -11,16 +13,16 @@ Noflux 由几个有一定依赖关系的 NPM 包组成，为防止与 `noflux` �
 非常建议 `noflux` 用户迁移到 Noflux，因为相比于前者，后者提供了很多新的功能：
 
 * `state.cursor` 与 `state` [同构](./state.md#cursor)。
-* `@connect` [部分监听](./connect.md#partial-connect) 可以避免大量重复渲染，从而提高 `render` 性能。
+* `@connect` [部分监听](./connect.md#partial-connecting) 可以避免大量重复渲染，从而提高 `render` 性能。
 * [完全重构的监听树](https://github.com/nofluxjs/noflux-state/pull/10)，进行了充分的性能测试和优化。
 
 ## 迁移列表
 
 ### 破坏性变化
 
-* [破坏性变化] `state.cursor`
+* `state.cursor`
 
-与 `noflux` 不同，`state.cursor` 将返回一个 `State` 实例（来自 [@noflux/state](https://www.npmjs.com/package/@noflux/state)），因此可以对 `state.cursor` 的接口进行 `.set`、`.get`、`.cursor` 等操作，它们是同构的。
+与 `noflux` 不同，`state.cursor` 将返回一个 `State` 实例（来自 [@noflux/state](https://www.npmjs.com/package/@noflux/state)），因此可以对 `state.cursor` 的接口进行 `.set`、`.get`、`.cursor` 等操作。
 
 迁移方法如下：
 
@@ -32,17 +34,17 @@ Noflux 由几个有一定依赖关系的 NPM 包组成，为防止与 `noflux` �
 | 写入状态（利用回调）| `cursor.update(fn)` | 不再支持，请使用 `.get` 和 `.set` |
 | 下一级游标 | - | `cursor.cursor('c.d')` |
 
-* [破坏性变化] `cursor.mergeUpdate`
+* `cursor.mergeUpdate`
 
 不在支持任何需要深克隆的操作，请使用 `cursor.set` 替代。
 
-* [破坏性变化] `state.toJS`
+* `state.toJS`
 
 请使用 `state.get()` 代替。
 
 ### 非破坏性变化
 
-* [非破坏性变化] `state.on` 与 `cursor.on`
+* `state.on` 与 `cursor.on`
 
 Noflux 对事件进行了调整，但依旧兼容 `noflux` 中的事件名。
 
@@ -54,7 +56,7 @@ Noflux 对事件进行了调整，但依旧兼容 `noflux` 中的事件名。
 
 > **注意：所有废弃接口可能在后续版本中移除，请尽快进行迁移**
 
-* [废弃] `state.load`
+* `state.load`
 
 建议使用 `state.set(data)` 替代，原接口仍可使用但会输出如下信息：
 
@@ -62,7 +64,7 @@ Noflux 对事件进行了调整，但依旧兼容 `noflux` 中的事件名。
 Warning: state.load(data) is deprecated, use state.set(data) or state.set(\'\', data).
 ```
 
-* [废弃] `@pure`
+* `@pure`
 
 [React 15.3.0 版本](https://github.com/facebook/react/blob/master/CHANGELOG.md#1530-july-29-2016) 引入了 [PureComponent](https://facebook.github.io/react/docs/react-api.html#react.purecomponent)，因此在 `15.3.0` 及其之后的版本建议直接使用 `PureComponent`，`@pure` 修饰符仍可使用但会输出如下信息：
 
@@ -70,9 +72,9 @@ Warning: state.load(data) is deprecated, use state.set(data) or state.set(\'\', 
 Warning: @pure is deprecated, use React.PureComponent instead. https://facebook.github.io/react/docs/pure-render-mixin.html
 ```
 
-* [废弃] `@Connect`
+* `@Connect`
 
-建议使用 `@connect` 替代，，原接口仍可使用但会输出如下信息：
+建议使用 `@connect` 替代，原接口仍可使用但会输出如下信息：
 
 ```
 Warning: @Connect is deprecated, use @connect instead.

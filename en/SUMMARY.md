@@ -8,3 +8,4 @@
 * [Advanced](./advanced/index.md)
   * [state](./advanced/state.md)
   * [@connect](./advanced/connect.md)
+  * [Migration](./advanced/migration.md)
