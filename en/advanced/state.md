@@ -1,7 +1,3 @@
-This document needs to be translated to English.
-
----
-
 # `state`
 
 ## Path Description String (`path`) {#path}
@@ -45,7 +41,7 @@ state.get().d.e;                    // will throw TypeError: Cannot read propert
 
 As shown in the last line of code the `state.get` always return `undefined` for non-existent paths instead of throwing an exception. This makes it unnecessary to do so much repetitive initialization and judgment when developing.
 
-`state.get` is the recommended way to get the internal state tree. Although using `.` directly also works but may loss performance. (See more here: [Partial Connect](./connect.md#partial-connect))
+`state.get` is the recommended way to get the internal state tree. Although using `.` directly also works but may loss performance. (See more here: [Partial Connecting](./connect.md#partial-connecting))
 
 ## `state.set([path = ''], value)`
 

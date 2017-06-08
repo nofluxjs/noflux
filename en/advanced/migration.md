@@ -13,7 +13,7 @@ Noflux is made up of several NPM packages with a certain dependency. To prevent 
 It is highly recommended that `noflux` users should migrate to Noflux because it offers a lot of new features:
 
 * `state.cursor` is [isomorphic](./state.md#cursor) to `state`.
-* `@connect` use [partial connect](./connect.md#partial-connect) to avoid a lot of repetitive re-rendering and improve rendering performance.
+* `@connect` use [partial connecting](./connect.md#partial-connecting) to avoid a lot of repetitive re-rendering and improve rendering performance.
 * [Completely refactored listener tree](https://github.com/nofluxjs/noflux-state/pull/10) has been fully tested and optimized performance.
 
 ## Migration list

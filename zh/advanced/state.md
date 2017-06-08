@@ -41,7 +41,7 @@ state.get().d.e;                    // will throw TypeError: Cannot read propert
 
 正如最后一行代码所示，`state.get` 对于不存在的路径总会返回 `undefined`，而不是抛出异常。这使得在项目开发时不必过多做重复的初始化和判断工作。
 
-`state.get`是获取内部状态树的推荐方法。虽然通过 `JavaScript` 的 `.` 也可以获取属性，但会损失一定的安全性和性能（详见：[部分监听](./connect.md#partial-connect)）。
+`state.get`是获取内部状态树的推荐方法。虽然通过 `JavaScript` 的 `.` 也可以获取属性，但会损失一定的安全性和性能（详见：[部分监听](./connect.md#partial-connecting)）。
 
 ## `state.set([path = ''], value)`
 

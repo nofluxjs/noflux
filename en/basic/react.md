@@ -62,4 +62,4 @@ As Noflux's interfaces and optimization, the design of state can be more free:
 
 * Use [path description string](../advanced/state.md#path) and [state.cursor](../advanced/state.md#cursor) to easily manipulate the nested state.
 
-* The `@connect` decorator use [partial connect](../advanced/connect.md#partial-connect) to avoid performance problem when sub-tree state changing.
+* The `@connect` decorator use [partial connecting](../advanced/connect.md#partial-connecting) to avoid performance problem when sub-tree state changing.
