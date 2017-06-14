@@ -1,70 +1,74 @@
 import React, { Component } from 'react';
 import { connect, state } from '@noflux/react';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from './constants/TodoFilters'
+import Header from './components/Header';
+import TodoItem from './components/TodoItem';
+import Footer from './components/Footer';
+import Info from './components/Info';
 import './App.css';
 
+const TODO_FILTERS = {
+  [SHOW_ALL]: () => true,
+  [SHOW_ACTIVE]: ({ completed }) => !completed,
+  [SHOW_COMPLETED]: ({ completed }) => completed,
+}
+
+state.set({
+  filter: SHOW_ALL,
+  todos: [{
+    id: Date.now(),
+    text: 'Use Noflux',
+    completed: false,
+  }],
+});
+
 class App extends Component {
+
+  completeAll() {
+    const todos = state.get('todos');
+    const areAllMarked = todos.filter(TODO_FILTERS[SHOW_COMPLETED]).length === todos.length;
+    state.set('todos', todos.map(todo => ({ ...todo, completed: !areAllMarked})));
+  }
+
   render() {
+    const todos = state.get('todos');
     return (
-			<section>
-				<section className="todoapp">
-					<header className="header">
-						<h1>todos</h1>
-						<input className="new-todo" placeholder="What needs to be done?" autofocus />
-					</header>
-					{/*This section should be hidden by default and shown when there are todos*/}
-					<section className="main">
-						<input className="toggle-all" type="checkbox" />
-						<label for="toggle-all">Mark all as complete</label>
-						<ul className="todo-list">
-							{/*These are here just to show the structure of the list items*/}
-							{/*List items should get the class `editing` when editing and `completed` when marked as completed*/}
-							<li className="completed">
-								<div className="view">
-									<input className="toggle" type="checkbox" checked />
-									<label>Taste JavaScript</label>
-									<button className="destroy"></button>
-								</div>
-								<input className="edit" value="Create a TodoMVC template" />
-							</li>
-							<li>
-								<div className="view">
-									<input className="toggle" type="checkbox" />
-									<label>Buy a unicorn</label>
-									<button className="destroy"></button>
-								</div>
-								<input className="edit" value="Rule the web" />
-							</li>
-						</ul>
-					</section>
-					{/*This footer should hidden by default and shown when there are todos*/}
-					<footer className="footer">
-						{/*This should be `0 items left` by default*/}
-						<span className="todo-count"><strong>0</strong> item left</span>
-						{/*Remove this if you don't implement routing*/}
-						<ul className="filters">
-							<li>
-								<a className="selected" href="#/">All</a>
-							</li>
-							<li>
-								<a href="#/active">Active</a>
-							</li>
-							<li>
-								<a href="#/completed">Completed</a>
-							</li>
-						</ul>
-						{/*Hidden if no completed items are left ↓*/}
-						<button className="clear-completed">Clear completed</button>
-					</footer>
-				</section>
-				<footer className="info">
-					<p>Double-click to edit a todo</p>
-					{/*Remove the below line ↓*/}
-					<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-					{/*Change this out with your name and url ↓*/}
-					<p>Created by <a href="http://todomvc.com">you</a></p>
-					<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-				</footer>
-			</section>
+      <div>
+        <section className="todoapp">
+          <Header
+            addTodo={(text) => state.cursor('todos').push({ id: Date.now(), text, completed: false })}
+          />
+          <section className="main">
+            <input
+              className="toggle-all"
+              type="checkbox"
+              checked={todos.filter(TODO_FILTERS[SHOW_COMPLETED]).length === todos.length}
+              onChange={() => this.completeAll()}
+            />
+            <label htmlFor="toggle-all">Mark all as complete</label>
+            <ul className="todo-list">
+              {todos.filter(TODO_FILTERS[state.get('filter')]).map((todo, index) => (
+                <TodoItem
+                  todo={todo}
+                  editTodo={(id, text) => state.set(`todos.${index}.text`, text)}
+                  deleteTodo={(idDeleted) => state.set('todos', state.get('todos').filter(({ id }) => id !== idDeleted))}
+                  completeTodo={() => state.set(`todos.${index}.completed`, !todo.completed)}
+                />
+              ))}
+            </ul>
+          </section>
+          {Boolean(todos && todos.length) &&
+            <Footer
+              completedCount={todos.filter(TODO_FILTERS[SHOW_COMPLETED]).length}
+              activeCount={todos.filter(TODO_FILTERS[SHOW_ACTIVE]).length}
+              filter={state.get('filter')}
+              onClearCompleted={() => state.set('todos', todos.filter(TODO_FILTERS[SHOW_ACTIVE]))}
+              onShow={(filter) => state.set('filter', filter)}
+            />
+          }
+        </section>
+        <Info />
+      </div>
     );
   }
 }
