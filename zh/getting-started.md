@@ -5,7 +5,7 @@
 使用 [npm](https://www.npmjs.com/) 命令，安装`@noflux/react`包：
 
 ```bash
-npm install @noflux/react
+npm install --save @noflux/react
 ```
 
 
