@@ -1,8 +1,12 @@
 {
   "plugins": [
+    "github",
     "ga"
   ],
   "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/nofluxjs/noflux"
+    },
     "ga": {
       "token": "UA-99244857-1"
     }
