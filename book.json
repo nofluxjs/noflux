@@ -1,6 +1,7 @@
 {
   "plugins": [
     "github",
+    "copy-code-button",
     "ga"
   ],
   "pluginsConfig": {
