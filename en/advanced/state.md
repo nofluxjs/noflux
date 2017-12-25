@@ -67,6 +67,26 @@ console.log(obj1 === obj2);  // output: false
 
 It is important to note that `state.set` is the recommended method of changing the state. Using `.`directly, like `state.get().a.b = 1` will cause the component can not re-rendering as well.
 
+## `state.update([path = ''], callback)`
+
+The `update` method provides a more functional way to update state. The `callback` function receives the old value and should return the new value.
+
+```js
+state.set('a.b', 1);
+state.update('a', obj => ({
+  ...obj,
+  c: 2,
+}));
+// equals to:
+/*
+state.set('a', {
+  ...state.get('a'),
+  c: 2,
+});
+*/
+console.log(state.get()); // output: { a: { b: 1, c: 2 } }
+```
+
 ## `state.cursor([path = ''])` {#cursor}
 
 If you need to read and write specific path of `state`, you can use `state.cursor` to make the code clearer.

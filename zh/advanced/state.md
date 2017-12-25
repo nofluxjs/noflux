@@ -67,6 +67,26 @@ console.log(obj1 === obj2);  // output: false
 
 需要注意，`state.set` 是改变内部状态树的推荐方法，直接使用点`.`修改属性（如 `state.get().a.b = 1`）将会造成组件不能正常渲染等问题。
 
+## `state.update([path = ''], callback)`
+
+`update` 方法提供了一种更加函数式的更新状态的方法，回调函数 `callback` 接收旧的状态值并应当返回新的状态值。
+
+```js
+state.set('a.b', 1);
+state.update('a', obj => ({
+  ...obj,
+  c: 2,
+}));
+// equals to:
+/*
+state.set('a', {
+  ...state.get('a'),
+  c: 2,
+});
+*/
+console.log(state.get()); // output: { a: { b: 1, c: 2 } }
+```
+
 ## `state.cursor([path = ''])` {#cursor}
 
 如果需要频繁读、写 `state` 特定路径下的数据，可以使用 `state.cursor` 使代码更加清晰。
