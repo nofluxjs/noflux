@@ -62,4 +62,4 @@ const dataA = state.get('dataA');
 const dataB = state.get('dataB');
 ```
 
-> `@connect`'s partial connecting rely on [listener tree](https://github.com/nofluxjs/noflux-state/blob/next/src/listener-tree.js) in `@noflux/state` which use some algorithms to optimize the performance.
+> `@connect`'s partial connecting rely on [listener tree](https://github.com/nofluxjs/noflux-state/blob/master/src/listener-tree.js) in `@noflux/state` which use some algorithms to optimize the performance.

@@ -62,4 +62,4 @@ const dataA = state.get('dataA');
 const dataB = state.get('dataB');
 ```
 
-> `@connect` 依靠 `@noflux/state` 包中的 [监听树](https://github.com/nofluxjs/noflux-state/blob/next/src/listener-tree.js) 实现部分监听，后者做了许多算法优化以保证性能。
+> `@connect` 依靠 `@noflux/state` 包中的 [监听树](https://github.com/nofluxjs/noflux-state/blob/master/src/listener-tree.js) 实现部分监听，后者做了许多算法优化以保证性能。
