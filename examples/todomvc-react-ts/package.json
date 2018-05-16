@@ -15,7 +15,7 @@
   "author": "Jack Hsu <jack.hsu@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@noflux/react": "0.6.1",
+    "@noflux/react": "1.0.0-alpha.3",
     "classnames": "2.2.5",
     "concurrently": "3.4.0",
     "express": "4.15.2",
