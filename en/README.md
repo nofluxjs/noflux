@@ -12,4 +12,3 @@
 * [Getting Started](./getting-started.md) A quick start tutorial.
 * [Basic](./basic/index.md) Basic usages
 * [Advanced](./advanced/index.md) Advanced Usage
-* [Migration](./advanced/migration.md) Migratiing from `noflux`

@@ -1,8 +1,4 @@
-# Migration
-
-Migrating from `noflux`.
-
-## Background
+# Migration from `noflux` to `v0.x`
 
 Noflux's predecessor was the `noflux` project (NPM：[noflux](https://www.npmjs.com/package/noflux)，Github：[ssnau/noflux](https://github.com/ssnau/noflux)). Noflux's concepts were mainly learned from the latter, and Noflux's development was supported by the `noflux` developer [ssnau](https://github.com/ssnau).
 

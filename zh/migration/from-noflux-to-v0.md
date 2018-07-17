@@ -1,8 +1,4 @@
-# 迁移
-
-从 `noflux` 迁移。
-
-## 背景
+# 从`noflux`到`v0.x`
 
 Noflux 的前身是 `noflux` 项目（NPM：[noflux](https://www.npmjs.com/package/noflux)，Github：[ssnau/noflux](https://github.com/ssnau/noflux))，Noflux 的思想主要借鉴自后者 ，同时 Noflux 的开发得到了 `noflux` 开发者 [ssnau](https://github.com/ssnau) 的大力支持。
 
