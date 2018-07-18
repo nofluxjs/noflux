@@ -12,4 +12,3 @@
 * [入门](./getting-started.md) 快速入门教程
 * [基础](./basic/index.md) 基础使用
 * [高级](./advanced/index.md) 高级文档
-* [迁移](./advanced/migration.md) 从 `noflux` 迁移
